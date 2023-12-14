@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/photobox/photobox.css'%}">
+    <script src="{% static 'js/jquery/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/photobox/jquery.photobox.js' %}"></script>
+</head>
+<body>
+
+  {% comment %} <button id='addImage'>add image</button><button id='removeImage'>remove image</button> {% endcomment %}
+	<br><br>
+	<div id='wrap'>
+		<div id='gallery'>
+      {% comment %} {%for photo in all_photo%}
+			<a href="{{ photo.photo.url }}" title='cool pic!'>open image
+				<!--<img src="http://farm9.static.flickr.com/8376/8398098378_9689a2bd0b_s.jpg" title="xxx">-->
+			</a>
+      {%endfor%} {% endcomment %}
+      {%for photo in all_photo%}
+			<a href="{{ photo.photo.url }}">
+				<div style='display:inline-block;'>
+					<img src="{{ photo.photo.url }}" title="{{ photo.title }}">
+				</div>
+			</a>
+      {%endfor%}
+			{% comment %} <a href="{{ photo.photo.url }}">
+				<img src="{{ photo.photo.url }}" title="{{ photo.title }}">
+			</a> {% endcomment %}
+		</div>
+		<br>
+
+  {% comment %} скрипт для галереи photobox {% endcomment %}
+	<script>
+		function callback(a){
+			console.log('loaded gallery 1', a);
+		}
+		{% comment %} function callback2(a){
+			console.log('loaded gallery 2', a);
+		} {% endcomment %}
+		//$('a').photobox({ thumbs:true });
+		$('#gallery').photobox('a', { thumbs:false, time:0, history:false, beforeShow:callback });
+		{% comment %} $('#gallery2').photobox('div > a', { thumbs:true, history:false }, callback2);
+		$('#gallery3').photobox('a', { thumbs:true, history:false, thumb:'+ img' }); {% endcomment %}
+
+		// testing for gallery observers on DOM changes
+		{% comment %} var imageLink = $('#gallery a:first'); {% endcomment %}
+		{% comment %} $('#addImage').on('click',function(){
+			$('#gallery2 > div').append( imageLink.clone() );
+		});
+
+		$('#removeImage').on('click',function(){
+			$('#gallery2 a:last').remove();
+		}); {% endcomment %}
+	</script>
+</body>
+</html>
