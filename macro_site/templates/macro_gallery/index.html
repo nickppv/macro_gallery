@@ -1,4 +1,5 @@
 {% load static %}
+{% load sass_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,38 +9,77 @@
     <title>Главная страница</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/photobox/photobox.css'%}">
     <script src="{% static 'js/jquery/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/photobox/jquery.photobox.js' %}"></script>
-</head>
+    <link rel="stylesheet" href="{% static 'css/photobox/photobox.css'%}">
+    <link rel="stylesheet" href="{% sass_src 'css/top_gallery/style.scss'%}">
+    <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}">
+    {% comment %} <l src="{% static 'js/photobox/jquery.photobox.js' %}"></script> {% endcomment %}
+    {% comment %} <script src="{% static 'js/top_gallery/top_gallery.js' %}" data-path="{{ images_top_gallery }}"></script> {% endcomment %}
+  </head>
 <body>
+
+
+
+
+  <h1>Заголовок или навбар</h1>
+  <p>{{path_to_picture}}</p>
+  {% comment %} Верхняя галерея {% endcomment %}
+  <div class="container demo">
+    <div class="row demo__help">
+      Choose a photo
+    </div>
+    <div class="demo__gallery">
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+      <div class="demo__placeholder"></div>
+    </div>
+  </div>
+
 
   {% comment %} <button id='addImage'>add image</button><button id='removeImage'>remove image</button> {% endcomment %}
 	<br><br>
-	<div id='wrap'>
-		<div id='gallery'>
-      {% comment %} {%for photo in all_photo%}
-			<a href="{{ photo.photo.url }}" title='cool pic!'>open image
-				<!--<img src="http://farm9.static.flickr.com/8376/8398098378_9689a2bd0b_s.jpg" title="xxx">-->
-			</a>
-      {%endfor%} {% endcomment %}
-      {%for photo in all_photo%}
-			<a href="{{ photo.photo.url }}">
-				<div style='display:inline-block;'>
-					<img src="{{ photo.photo.url }}" title="{{ photo.title }}">
-				</div>
-			</a>
-      {%endfor%}
-			{% comment %} <a href="{{ photo.photo.url }}">
-				<img src="{{ photo.photo.url }}" title="{{ photo.title }}">
-			</a> {% endcomment %}
+
+  <div class="container" id='wrap'>
+    <div id='gallery' class="row">
+        {%for photo in all_photo%}
+        <div class="col-6">
+          <a href="{{ photo.photo.url }}">
+            <div style='display:inline-block;'>
+              <img src="{{ photo.photo.url }}" title="{{ photo.title }}" style="max-width: 100%; height: auto;">
+            </div>
+          </a>
+        </div>
+        {%endfor%}
 		</div>
-		<br>
+  </div>
+	<br>
 
   {% comment %} скрипт для галереи photobox {% endcomment %}
+
 	<script>
-		function callback(a){
-			console.log('loaded gallery 1', a);
+    function callback(a){
+      console.log('loaded gallery 1', a);
 		}
 		{% comment %} function callback2(a){
 			console.log('loaded gallery 2', a);
@@ -58,6 +98,109 @@
 		$('#removeImage').on('click',function(){
 			$('#gallery2 a:last').remove();
 		}); {% endcomment %}
-	</script>
+  </script>
+
+
+  {% comment %} скрипт для галереи top_gallery {% endcomment %}
+
+  <script>
+    "use strict";
+    $(document).ready(function() {
+
+    var rows = 4; //change this also in css
+    var cols = 6; //change this also in css
+    var staggerTime = 150;
+
+    var urls = JSON.parse('{{ images_top_gallery|escapejs }}');
+
+    var $gallery = $(".demo__gallery");
+    var $help = $(".demo__help");
+    var partsArray = [];
+    var reqAnimFr = (function() {
+      return window.requestAnimationFrame || function(cb) {
+        setTimeout(cb, 1000 / 60);
+      }
+    })();
+
+
+    $gallery.html('');
+    for (let row = 1; row <= rows; row++) {
+      partsArray[row - 1] = [];
+      for (let col = 1; col <= cols; col++) {
+        $gallery.append(`<div class="show-front demo__part demo__part-${row}-${col}" row="${row}" col="${col}"><div class="demo__part-back"><div class="demo__part-back-inner"></div></div><div class="demo__part-front"></div></div>`);
+        partsArray[row - 1][col - 1] = new Part();
+      }
+    }
+
+    var $parts = $(".demo__part");
+    var $image = $(".demo__part-back-inner");
+    var help = true;
+
+    for (let i = 0; i < $parts.length; i++) {
+      $parts.find(".demo__part-front").eq(i).css("background-image", `url(${urls[i]})`);
+    }
+
+    $gallery.on("click", ".demo__part-front", function() {
+
+      $image.css("background-image", $(this).css("background-image"));
+      if (help) {
+        $help.html("Click any of the tiles to get back");
+        help = false;
+      }
+
+      let row = +$(this).closest(".demo__part").attr("row");
+      let col = +$(this).closest(".demo__part").attr("col");
+      waveChange(row, col);
+    });
+
+    $gallery.on("click", ".demo__part-back", function() {
+      if (!isShowingBack()) return;
+
+      $help.html(`Check out my other <a target="blank" href="https://codepen.io/kiyutink/">pens</a> and follow me on <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>`);
+
+      setTimeout(function() {
+        for (let row = 1; row <= rows; row++) {
+          for (let col = 1; col <= cols; col++) {
+            partsArray[row - 1][col - 1].showing = "front";
+          }
+        }
+      }, staggerTime + $parts.length * staggerTime / 10);
+
+
+      showFront(0, $parts.length);
+
+    });
+
+    function showFront(i, maxI) {
+      if (i >= maxI) return;
+      $parts.eq(i).addClass("show-front");
+
+      reqAnimFr(function() {
+        showFront(i + 1);
+      });
+    }
+
+    function isShowingBack() {
+      return partsArray[0][0].showing == "back" && partsArray[0][cols - 1].showing == "back" && partsArray[rows - 1][0].showing == "back" && partsArray[rows - 1][cols - 1].showing == "back";
+    }
+
+    function Part() {
+      this.showing = "front";
+    }
+
+    function waveChange(rowN, colN) {
+      if (rowN > rows || colN > cols || rowN <= 0 || colN <= 0) return;
+      if (partsArray[rowN - 1][colN - 1].showing == "back") return;
+      $(".demo__part-" + rowN + "-" + colN).removeClass("show-front");
+      partsArray[rowN - 1][colN - 1].showing = "back";
+      setTimeout(function() {
+        waveChange(rowN + 1, colN);
+        waveChange(rowN - 1, colN);
+        waveChange(rowN, colN + 1);
+        waveChange(rowN, colN - 1);
+      }, staggerTime);
+    }
+  });
+  </script>
 </body>
 </html>
