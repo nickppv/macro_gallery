@@ -4,5 +4,5 @@ from . import views
 app_name = 'macro_gallery'
 
 urlpatterns = [
-    path('', path(views.index), name='index')
+    path('', views.index, name='index')
 ]

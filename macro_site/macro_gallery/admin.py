@@ -7,3 +7,4 @@ from .models import Photo
 class PhotoAdmin(admin.ModelAdmin):
     ordering = ['title', ]
     search_fields = ['title', 'description']
+    list_display = ['title', 'description', 'created_at', 'published_date', 'photo']
