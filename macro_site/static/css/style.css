@@ -1,0 +1,33 @@
+body {
+    /* background-color: black; */
+}
+
+/* .container {
+    min-width: 525px;
+    background-color: rgb(0, 0, 0);
+} */
+
+.top_gallery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: larger;
+    color:bisque;
+    position: absolute;
+    top: 175px;
+    opacity: 80%;
+}

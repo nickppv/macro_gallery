@@ -1,13 +1,13 @@
-$partSize: 110px;
-$margins: 2px;
-$rows: 4; //change this also in js
-$cols: 6; //change this also in js
+$partSize: 90px;
+$margins: 1px;
+$rows: 5; //change this also in js
+$cols: 14; //change this also in js
 $perspective: 700px;
 $transTime: 0.3s;
-$border-radius: 5px;
+$border-radius: 3px;
 $shadow-size: 10px;
 $demo-bg: linear-gradient(60deg, #5B5893, darken(#6A66A6, 30%));
-$gallery-bg: #eee;
+$gallery-bg: #111;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -60,7 +60,7 @@ $gallery-bg: #eee;
 
     &:hover .demo__part-front {
       box-shadow: 0 0 $shadow-size black;
-      transform: scale(0.96);
+      transform: scale(0.97);
 
       &:after {
         opacity: 0;
@@ -102,7 +102,7 @@ $gallery-bg: #eee;
       background-color: black;
 
       content: "";
-      opacity: 0.5;
+      opacity: 0.25;
       transition: all $transTime / 1.5 ease;
     }
   }

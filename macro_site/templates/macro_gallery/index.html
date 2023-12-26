@@ -12,55 +12,47 @@
     <script src="{% static 'js/jquery/jquery-3.7.1.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/photobox/photobox.css'%}">
     <link rel="stylesheet" href="{% sass_src 'css/top_gallery/style.scss'%}">
-    <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}">
-    {% comment %} <l src="{% static 'js/photobox/jquery.photobox.js' %}"></script> {% endcomment %}
+    <script src="https://kit.fontawesome.com/c90aafdde2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}"> {% endcomment %}
+    {% comment %} <script src="{% static 'js/photobox/jquery.photobox.js' %}"></script> {% endcomment %}
     {% comment %} <script src="{% static 'js/top_gallery/top_gallery.js' %}" data-path="{{ images_top_gallery }}"></script> {% endcomment %}
   </head>
-<body>
+<body class="bg-dark">
 
+  <div class="container">
+    <div class="row justify-content-center">
 
+        <nav class="navbar navbar-light bg-dark">
+          <div class="container-fluid">
+            <a href="#" class="navbar-brand text-secondary">Название сайта</a>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Поиск по тегам" aria-label="Поиск">
+              <button class="btn btn-dark" type="submit">Поиск</button>
+            </form>
+          </div>
+        </nav>
 
-
-  <h1>Заголовок или навбар</h1>
-  <p>{{path_to_picture}}</p>
-  {% comment %} Верхняя галерея {% endcomment %}
-  <div class="container demo">
-    <div class="row demo__help">
-      Choose a photo
     </div>
-    <div class="demo__gallery">
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
-      <div class="demo__placeholder"></div>
+
+  <div class="row top_gallery d-none d-md-block bg-dark">
+    {% comment %} <div class="container demo"> {% endcomment %}
+    <div class="gallery">
+      <div class="demo__gallery">
+        <div class="demo__placeholder"></div>
+      </div>
+    </div>
+    {% comment %} </div> {% endcomment %}
+    <div class="logo_gallery">
+      <p>Название</p>
+      <img src="{% static '/img/logo/camera_transp2.png' %}" alt="Just logo" title="Чмок!">
+      <p>сайта</p>
     </div>
   </div>
+</div>
 
 
-  {% comment %} <button id='addImage'>add image</button><button id='removeImage'>remove image</button> {% endcomment %}
-	<br><br>
-
-  <div class="container" id='wrap'>
+  {% comment %} <div class="container" id='wrap'>
     <div id='gallery' class="row">
         {%for photo in all_photo%}
         <div class="col-6">
@@ -72,8 +64,7 @@
         </div>
         {%endfor%}
 		</div>
-  </div>
-	<br>
+  </div> {% endcomment %}
 
   {% comment %} скрипт для галереи photobox {% endcomment %}
 
@@ -107,8 +98,8 @@
     "use strict";
     $(document).ready(function() {
 
-    var rows = 4; //change this also in css
-    var cols = 6; //change this also in css
+    var rows = 5; //change this also in css
+    var cols = 14; //change this also in css
     var staggerTime = 150;
 
     var urls = JSON.parse('{{ images_top_gallery|escapejs }}');
