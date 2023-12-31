@@ -3,7 +3,7 @@
     $(document).ready(function() {
 
     var rows = 4; //change this also in css
-    var cols = 6; //change this also in css
+    var cols = 9; //change this also in css
     var staggerTime = 150;
 
     // var from_template = document.querySelector('script[data-path]').getAttribute('data-path');

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'macro_gallery.apps.MacroGalleryConfig',
     'sass_processor',
+    'el_pagination',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',  ## для EL-pagination
             ],
         },
     },
@@ -139,3 +141,5 @@ SASS_PROCESSOR_ROOT = STATIC_ROOT
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+EL_PAGINATION_PER_PAGE = 14

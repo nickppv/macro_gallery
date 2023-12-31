@@ -1,13 +1,13 @@
-$partSize: 90px;
-$margins: 1px;
-$rows: 5; //change this also in js
-$cols: 14; //change this also in js
+$partSize: 80px;
+$margins: 2px;
+$rows: 4; //change this also in js
+$cols: 15; //change this also in js
 $perspective: 700px;
 $transTime: 0.3s;
 $border-radius: 3px;
 $shadow-size: 10px;
 $demo-bg: linear-gradient(60deg, #5B5893, darken(#6A66A6, 30%));
-$gallery-bg: #111;
+$gallery-bg: #ffffff;
 
 *, *:before, *:after {
   box-sizing: border-box;
