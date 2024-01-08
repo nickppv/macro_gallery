@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'macro_gallery.apps.MacroGalleryConfig',
     'sass_processor',
     'el_pagination',
+    'taggit',
+
 ]
 
 MIDDLEWARE = [
@@ -142,4 +144,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-EL_PAGINATION_PER_PAGE = 14
+# EL_PAGINATION_PER_PAGE = 14
