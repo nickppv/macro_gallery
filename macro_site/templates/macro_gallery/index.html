@@ -1,122 +1,188 @@
 {% load static %}
 {% load sass_tags %}
-{% load el_pagination_tags %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    {% comment %} шрифт Pacifico {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    {% comment %} шрифт Comfortaa {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
 
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title></title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-		<link rel="stylesheet" href="{% static 'css/assets/main.css' %}"/>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<noscript><link rel="stylesheet" href="css/assets/noscript.css"/></noscript>
-	</head>
-	<body class="is-preload">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% comment %} <link rel="stylesheet" href="{% sass_src 'css/top_gallery/style.scss'%}"> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% sass_src 'css/main_gallery/photobox.scss'%}"> {% endcomment %}
+    {% comment %} <script src="https://kit.fontawesome.com/c90aafdde2.js" crossorigin="anonymous"></script> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/lightbox.css'%}">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/main_gallery/photobox.css'%}"> {% endcomment %}
+    {% comment %} скрипт для masonry для bootstrap {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  </head>
+<body>
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="№"><strong>Macro</strong> by Popov Nikolay</a></h1>
-						<nav>
-							<ul>
-								<li><a href="#footer" class="icon solid fa-info-circle">О сайте</a></li>
-							</ul>
-						</nav>
-					</header>
+  {% comment %} <div class="container">
+    <div class="row top_gallery d-none d-md-block">
+      <div class="gallery">
+        <div class="demo__gallery">
+          <div class="demo__placeholder"></div>
+        </div>
+      </div>
 
-				<!-- Main -->
-					<div id="main">
-						{% paginate all_photo %}{% get_pages %}
-						{% for photo in all_photo %}
-						<article class="thumb" title="{{ photo.description }}">
-							<a href="{{ photo.photo.url }}" class="image"><img src="{{ photo.photo.url }}" alt="{{ photo.description }}" /></a>
-							<h2>{{ photo.title }}</h2>
-							<p>{{ photo.description }}</p>
-						</article>
-						{% endfor %}
-						{% comment %} {% show_more %} {% endcomment %}
-						Показаны изображения с
-						{{ pages.current_start_index }} по {{ pages.current_end_index }} из
-						{{ pages.total_count }}.
-						{# Just print pages to render the Digg-style pagination. #}
-						{{ show_more }}
+      <div class="logo_gallery">
+        <img src="{% static '/img/logo/camera_transp2.png' %}" alt="Just logo" title="Чмок!">
+      </div>
+      <div class="logo_gallery">
+        <h1>X-MACRO</h1>
+      </div>
+    </div>
+  </div> {% endcomment %}
 
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer" class="panel">
-						<div class="inner split">
-							<div>
-								<section>
-									<h2>Сайт посвященный <strong>макрофотографии</strong></h2>
-									<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
-								</section>
-								<section>
-									<h2>Follow me on ...</h2>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="https://github.com/nickppv" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-										<li><a href="#" class="fa-brands fa-vk"><span class="label"></span></a></li>
-										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-									</ul>
-								</section>
-								<p class="copyright">
-									&copy; Unttled. Design: <a href="http://html5up.net">HTML5 UP</a>.
-								</p>
-							</div>
-							{% comment %} <div>
-								<section>
-									<h2>Get in touch</h2>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<input type="text" name="name" id="name" placeholder="Name" />
-											</div>
-											<div class="field half">
-												<input type="text" name="email" id="email" placeholder="Email" />
-											</div>
-											<div class="field">
-												<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-							</div> {% endcomment %}
-						</div>
-					</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-			<script src="https://kit.fontawesome.com/c90aafdde2.js" crossorigin="anonymous"></script>
-			<script src="{% static 'js/assets/jquery.min.js' %}"></script>
-			<script src="{% static 'js/assets/jquery.poptrox.min.js' %}"></script>
-			<script src="{% static 'js/assets/browser.min.js' %}"></script>
-			<script src="{% static 'js/assets/breakpoints.min.js' %}"></script>
-			<script src="{% static 'js/assets/util.js' %}"></script>
-			<script src="{% static 'js/assets/main.js' %}"></script>
+  <div class="container-fluid">
+    <div class="row col-10 main-gallery" data-masonry='{"percentPosition": true }'>
+        {% for photo in all_photo %}
+            <div class="card main-gallery-card gx-1 rounded">
+              <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo.photo.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+              <div class="card-body-text">
+                <h4 class="card-title">{{ photo.title }}</h4>
+                <p class="card-description">{{ photo.description }}</p>
+                <p class="card-tag">{{ photo.tags }}</p>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
 
 
 
-			{% block js %}
-				<script src="http://code.jquery.com/jquery-latest.js"></script>
-				{% comment %} <script src="{% static 'js/assets/el-pagination.js'%}"></script> {% endcomment %}
-				<script>
-					$.endlessPaginate({paginateOnScroll: true,
-					paginateOnScrollMargin: 200, });
-				</script>
-			{% endblock %}
-	</body>
+
+  {% comment %} <div class="container">
+    <div class="row">
+      {% for photo in all_photo %}
+      <div class="main_gallery">
+        <div id='gallery'>
+          <a href="{{photo.photo.url}}">
+              <img src="{{photo.photo.url}}"
+                  title="{{photo.title}}">
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div> {% endcomment %}
+
+
+  {% comment %} скрипт для галереи top_gallery {% endcomment %}
+  <script>
+    "use strict";
+    $(document).ready(function() {
+
+    var rows = 4; //change this also in css
+    var cols = 15; //change this also in css
+    var staggerTime = 150;
+
+    var urls = JSON.parse('{{ images_top_gallery|escapejs }}');
+
+    var $gallery = $(".demo__gallery");
+    var $help = $(".demo__help");
+    var partsArray = [];
+    var reqAnimFr = (function() {
+      return window.requestAnimationFrame || function(cb) {
+        setTimeout(cb, 1000 / 60);
+      }
+    })();
+
+
+    $gallery.html('');
+    for (let row = 1; row <= rows; row++) {
+      partsArray[row - 1] = [];
+      for (let col = 1; col <= cols; col++) {
+        $gallery.append(`<div class="show-front demo__part demo__part-${row}-${col}" row="${row}" col="${col}"><div class="demo__part-back"><div class="demo__part-back-inner"></div></div><div class="demo__part-front"></div></div>`);
+        partsArray[row - 1][col - 1] = new Part();
+      }
+    }
+
+    var $parts = $(".demo__part");
+    var $image = $(".demo__part-back-inner");
+    var help = true;
+
+    for (let i = 0; i < $parts.length; i++) {
+      $parts.find(".demo__part-front").eq(i).css("background-image", `url(${urls[i]})`);
+    }
+
+    $gallery.on("click", ".demo__part-front", function() {
+
+      $image.css("background-image", $(this).css("background-image"));
+      if (help) {
+        $help.html("Click any of the tiles to get back");
+        help = false;
+      }
+
+      let row = +$(this).closest(".demo__part").attr("row");
+      let col = +$(this).closest(".demo__part").attr("col");
+      waveChange(row, col);
+    });
+
+    $gallery.on("click", ".demo__part-back", function() {
+      if (!isShowingBack()) return;
+
+      $help.html(`Check out my other <a target="blank" href="https://codepen.io/kiyutink/">pens</a> and follow me on <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>`);
+
+      setTimeout(function() {
+        for (let row = 1; row <= rows; row++) {
+          for (let col = 1; col <= cols; col++) {
+            partsArray[row - 1][col - 1].showing = "front";
+          }
+        }
+      }, staggerTime + $parts.length * staggerTime / 10);
+
+
+      showFront(0, $parts.length);
+
+    });
+
+    function showFront(i, maxI) {
+      if (i >= maxI) return;
+      $parts.eq(i).addClass("show-front");
+
+      reqAnimFr(function() {
+        showFront(i + 1);
+      });
+    }
+
+    function isShowingBack() {
+      return partsArray[0][0].showing == "back" && partsArray[0][cols - 1].showing == "back" && partsArray[rows - 1][0].showing == "back" && partsArray[rows - 1][cols - 1].showing == "back";
+    }
+
+    function Part() {
+      this.showing = "front";
+    }
+
+    function waveChange(rowN, colN) {
+      if (rowN > rows || colN > cols || rowN <= 0 || colN <= 0) return;
+      if (partsArray[rowN - 1][colN - 1].showing == "back") return;
+      $(".demo__part-" + rowN + "-" + colN).removeClass("show-front");
+      partsArray[rowN - 1][colN - 1].showing = "back";
+      setTimeout(function() {
+        waveChange(rowN + 1, colN);
+        waveChange(rowN - 1, colN);
+        waveChange(rowN, colN + 1);
+        waveChange(rowN, colN - 1);
+      }, staggerTime);
+    }
+    });
+  </script>
+</body>
 </html>
