@@ -39,10 +39,10 @@
     $gallery.on("click", ".demo__part-front", function() {
 
       $image.css("background-image", $(this).css("background-image"));
-      if (help) {
-        $help.html("Click any of the tiles to get back");
-        help = false;
-      }
+      // if (help) {
+      //   $help.html("Click any of the tiles to get back");
+      //   help = false;
+      // }
 
       let row = +$(this).closest(".demo__part").attr("row");
       let col = +$(this).closest(".demo__part").attr("col");
@@ -52,7 +52,7 @@
     $gallery.on("click", ".demo__part-back", function() {
       if (!isShowingBack()) return;
 
-      $help.html(`Check out my other <a target="blank" href="https://codepen.io/kiyutink/">pens</a> and follow me on <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>`);
+      // $help.html(`Check out my other <a target="blank" href="https://codepen.io/kiyutink/">pens</a> and follow me on <a target="_blank" href="https://twitter.com/kiyutin_k">twitter</a>`);
 
       setTimeout(function() {
         for (let row = 1; row <= rows; row++) {
