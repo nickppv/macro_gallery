@@ -1,3 +1,31 @@
+.carousel-general {
+  box-shadow: 0px 2px 2px black;
+  /* border-bottom: 2px solid black; */
+}
+
+.carousel-second-div {
+  height: 500px;
+  opacity: 0.15;
+}
+
+.carousel-item img {
+  transform: translateY(-300px); /* сместил изображение вверх по вертикали
+  /* mix-blend-mode: overlay; */
+}
+
+.brand-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+h1 {
+  position: absolute;
+  top: 150px;
+  text-align: center;
+}
+
 body {
   background-color: #242424;
   font-family: Georgia;
@@ -40,7 +68,7 @@ body {
 }
 
 H1 {
-  font-size: 40px;
+  font-size: 80px;
   text-shadow:
     2px 2px 2px rgb(0, 0, 0), /* добавил для размытой тени контура */
     1px 1px 0 rgb(0, 0, 0),
@@ -48,12 +76,13 @@ H1 {
     -1px 1px 0 rgb(0, 0, 0),
     -1px -1px 0 rgb(0, 0, 0);
   /* color: #212529; */
-  transition: all 0.3s;
+  transition: all 1s;
 }
 
 H1:hover {
+  font-size: 75px;
   text-shadow:
-  4px 4px 4px rgb(0, 0, 0), /* добавил для размытой тени контура */
+  6px 6px 10px rgb(0, 0, 0), /* добавил для размытой тени контура */
   1px 1px 0 rgb(0, 0, 0),
   1px -1px 0 rgb(0, 0, 0),
   -1px 1px 0 rgb(0, 0, 0),

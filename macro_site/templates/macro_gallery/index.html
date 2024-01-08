@@ -33,6 +33,19 @@
   </head>
 <body>
 
+  <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
+    <div class="carousel-inner carousel-second-div">
+      {% for photo in images_for_slider %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="500">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
+        <img src="{{photo}}" class="d-block w-100" alt="...">
+      </div>
+      {% endfor %}
+    </div>
+    <div class="brand-name">
+      <h1>I-MACRO</h1>
+    </div>
+  </div>
+
   {% comment %} <div class="container">
     <div class="row top_gallery d-none d-md-block">
       <div class="gallery">
@@ -56,7 +69,7 @@
             <div class="card main-gallery-card gx-1 rounded">
               <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo.photo.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
               <div class="card-body-text">
-                <h4 class="card-title">{{ photo.title }}</h4>
+                <h5 class="card-title">{{ photo.title }}</h5>
                 <p class="card-description">{{ photo.description }}</p>
                 <p class="card-tag">{{ photo.tags }}</p>
               </div>
