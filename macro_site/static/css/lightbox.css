@@ -17,9 +17,9 @@
 }
 
 .card-body-text {
+  font-family: 'Comfortaa', sans-serif;
   color: rgb(190, 181, 132);
   text-shadow: black 1px 1px 1px;
-  font-family: 'Comfortaa', sans-serif;
   font-size: 12px;
   font-weight: 300;
   margin-top: 10px;

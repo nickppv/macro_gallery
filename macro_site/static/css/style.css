@@ -5,12 +5,11 @@
 
 .carousel-second-div {
   height: 500px;
-  opacity: 0.15;
+  opacity: 0.7;
 }
 
 .carousel-item img {
-  transform: translateY(-300px); /* сместил изображение вверх по вертикали
-  /* mix-blend-mode: overlay; */
+  transform: translateY(-300px); /* сместил изображение вверх по вертикали*/
 }
 
 .brand-name {
@@ -18,12 +17,6 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-}
-
-h1 {
-  position: absolute;
-  top: 150px;
-  text-align: center;
 }
 
 body {
@@ -67,24 +60,111 @@ body {
   z-index: 10;
 }
 
-H1 {
-  font-size: 80px;
+
+
+
+/*первый набор - переход с черного размытия на прозрачное со светлым размытием*/
+/* H1 {
+    font-size: 120px;
+    color: rgb(8, 8, 8);
+    text-shadow:
+    0px 0px 10px #aaaaaa,
+    1px 1px 0 #aaaaaa,
+    1px -1px 0 #aaaaaa,
+    -1px 1px 0 #aaaaaa,
+    -1px -1px 0 #aaaaaa;
+    transition: all 0.3s;
+    position: absolute;
+    top: 150px;
+    text-align: center;
+    mix-blend-mode: multiply;
+  }
+
+H1:hover {
+  font-size: 120px;
   text-shadow:
-    2px 2px 2px rgb(0, 0, 0), /* добавил для размытой тени контура */
+    2px 2px 5px rgb(187, 187, 187),
     1px 1px 0 rgb(0, 0, 0),
     1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(255, 255, 255),
+    -1px -1px 0 rgb(255, 255, 255);
+    mix-blend-mode:difference;
+} */
+
+
+  /*второй набор - аберрации и белое свечение*/
+  /* H1 {
+  font-size: 80px;
+  color: rgb(8, 8, 8);
+  text-shadow:
+    0px 0px 1px rgb(0, 0, 0),
+    1px 1px 0 rgb(20, 141, 50),
+    1px -1px 0 rgb(0, 0, 0),
     -1px 1px 0 rgb(0, 0, 0),
-    -1px -1px 0 rgb(0, 0, 0);
-  /* color: #212529; */
-  transition: all 1s;
+    -1px -1px 0 rgb(136, 85, 132);
+  transition: all 0.3s;
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  padding: 50px;
+  border-radius: 10px;
+  mix-blend-mode: screen;
 }
 
 H1:hover {
   font-size: 75px;
   text-shadow:
-  6px 6px 10px rgb(0, 0, 0), /* добавил для размытой тени контура */
-  1px 1px 0 rgb(0, 0, 0),
-  1px -1px 0 rgb(0, 0, 0),
-  -1px 1px 0 rgb(0, 0, 0),
-  -1px -1px 0 rgb(0, 0, 0);
-  }
+  0px 0px 10px #aaaaaa,
+  1px 1px 0 #aaaaaa,
+  1px -1px 0 #aaaaaa,
+  -1px 1px 0 #aaaaaa,
+  -1px -1px 0 #aaaaaa;
+  } */
+
+/* третий набор - просто черное свечение, как будто размытый текст, без перехода */
+/* H1 {
+  font-size: 120px;
+  color: rgb(8, 8, 8);
+  text-shadow:
+  0px 0px 10px #aaaaaa,
+  1px 1px 0 #aaaaaa,
+  1px -1px 0 #aaaaaa,
+  -1px 1px 0 #aaaaaa,
+  -1px -1px 0 #aaaaaa;
+  transition: all 0.3s;
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  mix-blend-mode: multiply;
+} */
+
+/* четвертый набор - переход с черного на прозрачное с хромматизмом*/
+H1 {
+  font-family: 'Comfortaa', sans-serif;
+  /* font-family: 'Roboto Flex', sans-serif; */
+  font-weight: 700;
+  font-size: 120px;
+  color: rgb(8, 8, 8);
+  text-shadow:
+  0px 0px 10px #aaaaaa,
+  1px 1px 0 #aaaaaa,
+  1px -1px 0 #aaaaaa,
+  -1px 1px 0 #aaaaaa,
+  -1px -1px 0 #aaaaaa;
+  transition: all 0.3s;
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  mix-blend-mode: multiply;
+}
+
+H1:hover {
+font-size: 120px;
+text-shadow:
+  0px 0px 0px rgb(187, 187, 187),
+  2px 2px 0 #ec4545,
+  1px -1px 0 #ec4545,
+  -2px 2px 0 #46d4e7,
+  -1px -1px 0 #46d4e7;
+  mix-blend-mode: difference;
+}

@@ -14,7 +14,9 @@
     {% comment %} шрифт Comfortaa {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Roboto+Flex:wght@200;400;600&display=swap" rel="stylesheet">
+    {% comment %} шрифт rubik {% endcomment %}
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -36,13 +38,13 @@
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
       {% for photo in images_for_slider %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="500">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
-        <img src="{{photo}}" class="d-block w-100" alt="...">
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="1500">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
+        <img src="{{photo}}" class="d-block h-100" alt="...">
       </div>
       {% endfor %}
     </div>
     <div class="brand-name">
-      <h1>I-MACRO</h1>
+      <h1 title="Хроматизмъ б-гъ послалъ на этотъ тѣкстъ.">I-MACRO</h1>
     </div>
   </div>
 
@@ -71,7 +73,8 @@
               <div class="card-body-text">
                 <h5 class="card-title">{{ photo.title }}</h5>
                 <p class="card-description">{{ photo.description }}</p>
-                <p class="card-tag">{{ photo.tags }}</p>
+
+                <p class="card-tag">{% for tag in photo.tags.all %} {{tag}} {%endfor%}</p>
               </div>
             </div>
         {% endfor %}
