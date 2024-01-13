@@ -37,17 +37,22 @@
 
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
-      {% for photo in images_for_slider %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="1500">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
-        <img src="{{photo}}" class="d-block h-100" alt="...">
+      {% for i in slider_photo_list %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="1000">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
+        <img src="{{i.photo.url}}" class="d-block h-100" alt="{{i.photo.description}}">
       </div>
       {% endfor %}
     </div>
     <div class="brand-name">
-      <h1 title="Хроматизмъ б-гъ послалъ на этотъ тѣкстъ.">I-MACRO</h1>
+      <h1 title="Чмок!" style="pointer-events: none">I-MACRO</h1>
     </div>
   </div>
 
+  {% comment %} {% for r in res %}
+    <p>
+      {{r.photo}}
+    </p>
+  {%endfor%} {% endcomment %}
   {% comment %} <div class="container">
     <div class="row top_gallery d-none d-md-block">
       <div class="gallery">
@@ -65,6 +70,7 @@
     </div>
   </div> {% endcomment %}
 
+
   <div class="container-fluid">
     <div class="row col-10 main-gallery" data-masonry='{"percentPosition": true }'>
         {% for photo in all_photo %}
@@ -73,8 +79,11 @@
               <div class="card-body-text">
                 <h5 class="card-title">{{ photo.title }}</h5>
                 <p class="card-description">{{ photo.description }}</p>
-
-                <p class="card-tag">{% for tag in photo.tags.all %} {{tag}} {%endfor%}</p>
+                <p class="card-tag">
+                  {% for tag in photo.tags.all %}
+                  <a href="{% url 'macro_gallery:result_by_tag' tag.slug %}"> {{ tag.name }}</a>
+                  {% endfor %}
+                </p>
               </div>
             </div>
         {% endfor %}
