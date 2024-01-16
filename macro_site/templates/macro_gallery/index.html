@@ -38,7 +38,7 @@
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
       {% for i in slider_photo_list %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="1000">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
         <img src="{{i.photo.url}}" class="d-block h-100" alt="{{i.photo.description}}">
       </div>
       {% endfor %}
@@ -77,11 +77,11 @@
             <div class="card main-gallery-card gx-1 rounded">
               <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo.photo.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
               <div class="card-body-text">
-                <h5 class="card-title">{{ photo.title }}</h5>
+                <h4 class="card-title">{{ photo.title }}</h4>
                 <p class="card-description">{{ photo.description }}</p>
                 <p class="card-tag">
                   {% for tag in photo.tags.all %}
-                  <a href="{% url 'macro_gallery:result_by_tag' tag.slug %}"> {{ tag.name }}</a>
+                  <a class="tag-class" href="{% url 'macro_gallery:result_by_tag' tag.slug %}"> {{ tag.name }}</a>
                   {% endfor %}
                 </p>
               </div>
