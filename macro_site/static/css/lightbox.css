@@ -13,18 +13,28 @@
   width: 26rem;
   margin: 10px;
   padding: 0px;
+  transition: box-shadow 0.2s ease-in-out;;
+
   /* padding-top: 5px; */
+}
+
+.main-gallery-card:hover {
+  box-shadow: 0px 0px 5px rgb(0, 0, 0);
 }
 
 .card-body-text {
   font-family: 'Comfortaa', sans-serif;
-  color: rgb(190, 181, 132);
-  text-shadow: black 1px 1px 1px;
+  color: #c9c9c9;
+  text-shadow: rgb(0, 0, 0) 1px 1px 1px;
   font-size: 12px;
   font-weight: 300;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 8px;
+  margin-right: 8px;
   margin-bottom: 10px;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .card-title {
@@ -33,10 +43,18 @@
 
 .card-description {
   margin: 0 auto;
+  text-align: right;
 }
 
 .card-tag {
   margin: 0 auto;
+  margin-top: 8px;
+}
+
+.tag-class {
+  text-decoration: none;
+  color: inherit;
+  font-size: medium;
 }
 
 body.lb-disable-scrolling {
