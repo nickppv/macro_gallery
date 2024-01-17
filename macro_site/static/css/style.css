@@ -22,16 +22,16 @@
 
 body {
   background-color: #242424;
-  font-family: Georgia;
+  /* font-family: Georgia; */
 }
 
-.top_gallery {
+/* .top_gallery {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -4px;
-}
+} */
 
 
 
