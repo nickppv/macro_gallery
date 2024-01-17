@@ -10,6 +10,7 @@
 
 .carousel-item img {
   transform: translateY(-300px); /* сместил изображение вверх по вертикали*/
+  width: 100%;
 }
 
 .brand-name {
