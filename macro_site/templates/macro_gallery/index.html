@@ -71,10 +71,10 @@
   </div> {% endcomment %}
 
 
-  <div class="container">
-    <div class="row main-gallery" data-masonry='{"percentPosition": true }'>
+  <div class="container-fluid overflow-hidden">
+    <div class="row main-gallery mx-auto w-100 " data-masonry='{"percentPosition": true }'>
         {% for photo in all_photo %}
-            <div class="card main-gallery-card gx-1 rounded">
+            <div class="card main-gallery-card gx-1 rounded text-center">
               <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo.photo.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
               <div class="card-body-text">
                  <div> {% comment %} блок для названия изображения и кнопки информации {% endcomment %}
@@ -88,11 +88,13 @@
                   {% endif %}
                 </div>
                 <p class="card-description">{{ photo.description }}</p>
+                {% if photo.tags.all %}
                 <p class="card-tag">Теги:
                   {% for tag in photo.tags.all %}
-                   <a class="tag-class" href="{% url 'macro_gallery:result_by_tag' tag.slug %}">{{ tag.name }}</a>
+                   <a class="tag-text" href="{% url 'macro_gallery:result_by_tag' tag.slug %}">{{ tag.name }}</a>
                   {% endfor %}
                 </p>
+                {% endif %}
               </div>
             </div>
         {% endfor %}
