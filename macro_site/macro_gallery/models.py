@@ -1,15 +1,17 @@
 from django.db import models
 
 from taggit.managers import TaggableManager
+from sorl.thumbnail import ImageField
 
 
 class Photo(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.CharField(max_length=255)
-    information = models.TextField(blank=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    published_date = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    title = models.CharField(max_length=100, verbose_name="Название")
+    description = models.CharField(max_length=255, verbose_name="Описание")
+    information = models.TextField(blank=True, verbose_name="Интересная информация")
+    created_at = models.DateTimeField(blank=True, null=True, verbose_name="Дата создания")
+    published_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
+    # photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
+    photo = ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Изображение")
     tags = TaggableManager()
 
     def __str__(self):
