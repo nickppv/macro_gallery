@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'macro_gallery.apps.MacroGalleryConfig',
     'sass_processor',
-    'el_pagination',
-    'taggit',
+    'el_pagination',  # ленивая загрузка изображений
+    'taggit',  # для тегирования фотографий
+    'sorl.thumbnail',  # для создания миниатюр изображений
 
 ]
 
@@ -141,7 +142,7 @@ SASS_PROCESSOR_ROOT = STATIC_ROOT
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'  # без этой настройки картинки не прогружаются на сайте, т.е. не отображаются
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # EL_PAGINATION_PER_PAGE = 14
