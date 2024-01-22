@@ -1,5 +1,6 @@
 {% load static %}
 {% load sass_tags %}
+{% load thumbnail %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@
     <div class="carousel-inner carousel-second-div">
       {% for i in slider_photo_list %}
       <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
-        <img src="{{i.photo.url}}" class="d-block h-100" alt="{{i.photo.description}}">
+        <img src="{{i.photo.url}}" class="d-block h-100 carus-img" alt="{{i.photo.description}}">
       </div>
       {% endfor %}
     </div>
@@ -75,7 +76,17 @@
     <div class="row main-gallery mx-auto w-100 " data-masonry='{"percentPosition": true }'>
         {% for photo in all_photo %}
             <div class="card main-gallery-card gx-1 rounded text-center">
-              <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo.photo.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+              {% if photo.photo|is_portrait %}
+                {% thumbnail photo.photo "300" crop="10px 10px" quality=75 as photo_thumb %}
+                  <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+                {% endthumbnail %}
+              {% else %}
+                {% thumbnail photo.photo "300" crop="bottom" quality=75 as photo_thumb %}
+                  <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+                {% endthumbnail %}
+              {% endif %}
+
+
               <div class="card-body-text">
                  <div> {% comment %} блок для названия изображения и кнопки информации {% endcomment %}
                   <div class="d-inline">
@@ -83,7 +94,7 @@
                   </div>
                   {% if photo.information %}
                     <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="{{ photo.information}}">
-                      <button class="btn btn-sm btn-secondary info-button" type="button">?</button>
+                      <button class="btn btn-sm btn-black info-button" type="button">?</button>
                     </span>
                   {% endif %}
                 </div>
