@@ -1,16 +1,19 @@
 from django.contrib import admin
-from .models import Photo
+from django.utils.html import format_html
 from django.forms import TextInput, Textarea
 from django.db import models
+from .models import Photo
+
+from sorl.thumbnail.admin import AdminImageMixin
+# from sorl.thumbnail import get_thumbnail
 
 
-# Register your models here.
 @admin.register(Photo)
-class PhotoAdmin(admin.ModelAdmin):
+class PhotoAdmin(AdminImageMixin, admin.ModelAdmin):  # для миниаютюр сюда я добавил "AdminImageMixin"
     ordering = ['title', ]
     search_fields = ['title', 'description']
-    list_display = ['title', 'description', 'tag_list', 'information', 'published_date', 'photo']
     list_editable = ['description', 'information']
+    list_display = ['title', 'description', 'tag_list', 'information', 'published_date', 'image_tag',]
 
     # для изменения размера поля в админке, сделал меньше TextField
     formfield_overrides = {
@@ -24,5 +27,7 @@ class PhotoAdmin(admin.ModelAdmin):
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.tags.all())
 
+    def image_tag(self, obj):
+        return format_html('<img src="{}" width="15%" height="15%"/>'.format(obj.photo.url))
 
 
