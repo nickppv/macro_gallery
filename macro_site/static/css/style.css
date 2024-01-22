@@ -4,13 +4,13 @@
 }
 
 .carousel-second-div {
-  height: 500px;
+  height: 40vh;
   opacity: 0.7;
 }
 
 .carousel-item img {
   transform: translateY(-300px); /* сместил изображение вверх по вертикали*/
-  width: 100%;
+  /* width: 100%; */
 }
 
 .brand-name {
@@ -20,9 +20,39 @@
   height: 100%;
 }
 
+/* четвертый набор - переход с черного на прозрачное с хроматизмом*/
+H1 {
+  font-family: 'Comfortaa', sans-serif;
+  /* font-family: 'Roboto Flex', sans-serif; */
+  font-weight: 700;
+  font-size: 120px;
+  color: rgb(8, 8, 8);
+  text-shadow:
+  0px 0px 10px #aaaaaa,
+  1px 1px 0 #aaaaaa,
+  1px -1px 0 #aaaaaa,
+  -1px 1px 0 #aaaaaa,
+  -1px -1px 0 #aaaaaa;
+  transition: all 0.3s;
+  position: absolute;
+  transform: translateY(-200px);
+  /* top: 150px; */
+  /* text-align: center; */
+  mix-blend-mode: multiply;
+}
+
 body {
   background-color: #242424;
   /* font-family: Georgia; */
+}
+
+.carus-img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.info-button {
+  color: #6d6d6d;
 }
 
 /* .top_gallery {
@@ -62,9 +92,6 @@ body {
   opacity: 90%;
   z-index: 10;
 }
-
-
-
 
 /*первый набор - переход с черного размытия на прозрачное со светлым размытием*/
 /* H1 {
@@ -140,26 +167,6 @@ H1:hover {
   text-align: center;
   mix-blend-mode: multiply;
 } */
-
-/* четвертый набор - переход с черного на прозрачное с хромматизмом*/
-H1 {
-  font-family: 'Comfortaa', sans-serif;
-  /* font-family: 'Roboto Flex', sans-serif; */
-  font-weight: 700;
-  font-size: 120px;
-  color: rgb(8, 8, 8);
-  text-shadow:
-  0px 0px 10px #aaaaaa,
-  1px 1px 0 #aaaaaa,
-  1px -1px 0 #aaaaaa,
-  -1px 1px 0 #aaaaaa,
-  -1px -1px 0 #aaaaaa;
-  transition: all 0.3s;
-  position: absolute;
-  top: 150px;
-  text-align: center;
-  mix-blend-mode: multiply;
-}
 
 /* H1:hover {
 font-size: 120px;
