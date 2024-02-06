@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'macro_gallery.apps.MacroGalleryConfig',
     'sass_processor',
     'el_pagination',  # ленивая загрузка изображений
     'taggit',  # для тегирования фотографий
     'sorl.thumbnail',  # для создания миниатюр изображений
-
 ]
 
 MIDDLEWARE = [
@@ -85,8 +85,10 @@ WSGI_APPLICATION = 'macro_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'macro_db',
+        'USER': 'macro',
+        'PASSWORD': '1234',
     }
 }
 
