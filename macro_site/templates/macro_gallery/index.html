@@ -5,132 +5,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
-    {% comment %} шрифт Pacifico {% endcomment %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    {% comment %} шрифт Comfortaa {% endcomment %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Roboto+Flex:wght@200;400;600&display=swap" rel="stylesheet">
-    {% comment %} шрифт rubik {% endcomment %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {{ title }}</title>
+  {# шрифт Pacifico #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  {# шрифт Comfortaa #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Roboto+Flex:wght@200;400;600&display=swap" rel="stylesheet">
+  {# шрифт rubik #}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  {% comment %} <link rel="stylesheet" href="{% sass_src 'css/top_gallery/style.scss'%}"> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="{% sass_src 'css/main_gallery/photobox.scss'%}"> {% endcomment %}
+  {% comment %} <script src="https://kit.fontawesome.com/c90aafdde2.js" crossorigin="anonymous"></script> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/lightbox.css'%}">
+  {# скрипт для masonry для bootstrap #}
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</head>
 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/lightbox.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    {% comment %} <link rel="stylesheet" href="{% sass_src 'css/top_gallery/style.scss'%}"> {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="{% sass_src 'css/main_gallery/photobox.scss'%}"> {% endcomment %}
-    {% comment %} <script src="https://kit.fontawesome.com/c90aafdde2.js" crossorigin="anonymous"></script> {% endcomment %}
-    {% comment %} <link rel="stylesheet" href="{% static 'css/top_gallery/style.css'%}"> {% endcomment %}
-    <link rel="stylesheet" href="{% static 'css/lightbox.css'%}">
-    {% comment %} <link rel="stylesheet" href="{% static 'css/main_gallery/photobox.css'%}"> {% endcomment %}
-    {% comment %} скрипт для masonry для bootstrap {% endcomment %}
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-
-  </head>
 <body>
-
+  {# слайдер  с рандомными фотографиями #}
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
-      {% for i in slider_photo_list %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">  {% comment %} делаем проверку: если элемент первый - делаем его активным (active). без этого слайдер не работает {% endcomment %}
-        <img src="{{i.photo.url}}" class="d-block h-100 carus-img" alt="{{i.photo.description}}">
-      </div>
-      {% endfor %}
-    </div>
-    <div class="brand-name">
-      <h1 title="Чмок!" style="pointer-events: none">I-MACRO</h1>
-    </div>
-  </div>
-
-  {% comment %} {% for r in res %}
-    <p>
-      {{r.photo}}
-    </p>
-  {%endfor%} {% endcomment %}
-  {% comment %} <div class="container">
-    <div class="row top_gallery d-none d-md-block">
-      <div class="gallery">
-        <div class="demo__gallery">
-          <div class="demo__placeholder"></div>
+        {% for i in slider_photo_list %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">  {# проверка: если элемент первый - делаем его активным (active). без этого слайдер не работает #}
+          <img src="{{i.photo.url}}" class="d-block h-100 carus-img" alt="{{i.photo.description}}">
         </div>
-      </div>
-
-      <div class="logo_gallery">
-        <img src="{% static '/img/logo/camera_transp2.png' %}" alt="Just logo" title="Чмок!">
-      </div>
-      <div class="logo_gallery">
-        <h1>X-MACRO</h1>
-      </div>
-    </div>
-  </div> {% endcomment %}
-
-
-  <div class="container-fluid overflow-hidden">
-    <div class="row main-gallery mx-auto w-100 " data-masonry='{"percentPosition": true }'>
-        {% for photo in all_photo %}
-            <div class="card main-gallery-card gx-1 rounded text-center">
-              {% if photo.photo|is_portrait %}
-                {% thumbnail photo.photo "300" crop="10px 10px" quality=75 as photo_thumb %}
-                  <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
-                {% endthumbnail %}
-              {% else %}
-                {% thumbnail photo.photo "300" crop="bottom" quality=75 as photo_thumb %}
-                  <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
-                {% endthumbnail %}
-              {% endif %}
-
-
-              <div class="card-body-text">
-                 <div> {% comment %} блок для названия изображения и кнопки информации {% endcomment %}
-                  <div class="d-inline">
-                    <h4 class="card-title d-inline">{{ photo.title }}</h4>
-                  </div>
-                  {% if photo.information %}
-                    <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="{{ photo.information}}">
-                      <button class="btn btn-sm btn-black info-button" type="button">?</button>
-                    </span>
-                  {% endif %}
-                </div>
-                <p class="card-description">{{ photo.description }}</p>
-                {% if photo.tags.all %}
-                <p class="card-tag">Теги:
-                  {% for tag in photo.tags.all %}
-                   <a class="tag-text" href="{% url 'macro_gallery:result_by_tag' tag.slug %}">{{ tag.name }}</a>
-                  {% endfor %}
-                </p>
-                {% endif %}
-              </div>
-            </div>
         {% endfor %}
     </div>
+    <div class="brand-name">
+        <h1 title="Чмок!" style="pointer-events: none">I-MACRO</h1>
+    </div>
   </div>
 
-
-
-
-  {% comment %} <div class="container">
-    <div class="row">
-      {% for photo in all_photo %}
-      <div class="main_gallery">
-        <div id='gallery'>
-          <a href="{{photo.photo.url}}">
-              <img src="{{photo.photo.url}}"
-                  title="{{photo.title}}">
-          </a>
+  {# строка поиска по названию, описанию и тегам #}
+  <div class="container overflow-hidden my-1">
+    <div class="row main-gallery col-6 mx-auto">
+      <form action="{% url 'macro_gallery:search' %}" method="GET">
+        <div class="input-group input-group-sm mb-3 bg-dark">
+          <input type="text" placeholder="Поиск" name="query" class="tag-search-input form-control border-black" aria-label="Поле поиска для изображений по тегам" aria-describedby="inputGroup-sizing-sm">
+          <button class="btn btn-dark border-black text-secondary" type="submit">Искать</button>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
+
+  {# лайтбокс с фотографиями и описанием #}
+  <div class="container-fluid overflow-hidden">
+    <div class="row main-gallery mx-auto w-100" data-masonry='{"percentPosition": true }'>
+      {% for photo in results %}
+        <div class="card main-gallery-card gx-1 rounded text-center">
+          {% if photo.photo|is_portrait %}
+            {% thumbnail photo.photo "300" crop="10px 10px" quality=75 as photo_thumb %}
+              <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+            {% endthumbnail %}
+          {% else %}
+            {% thumbnail photo.photo "300" crop="bottom" quality=75 as photo_thumb %}
+              <a href="{{photo.photo.url}}" data-lightbox="roadtrip" data-title="{{photo.title}}"><img src="{{photo_thumb.url}}" class="card-img-top figure-img rounded" alt="{{photo.title}}"></a>
+            {% endthumbnail %}
+          {% endif %}
+
+          <div class="card-body-text">
+             <div> {# блок для названия изображения и кнопки информации #}
+              <div class="d-inline">
+                <h4 class="card-title d-inline">{{ photo.title }}</h4>
+              </div>
+              {% if photo.information %}
+                <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="{{ photo.information}}">
+                  <button class="btn btn-sm btn-black info-button" type="button">?</button>
+                </span>
+              {% endif %}
+            </div>
+            <p class="card-description">{{ photo.description }}</p>
+            {% if photo.tags.all %}
+            <p class="card-tag">Теги:
+              {% for tag in photo.tags.all %}
+                <a class="tag-text" href="{% url 'macro_gallery:result_by_tag' tag.slug %}">{{ tag.name }}</a>
+              {% endfor %}
+            </p>
+            {% endif %}
+          </div>
+        </div>
       {% endfor %}
     </div>
-  </div> {% endcomment %}
+  </div>
 
-  {% comment %} скрипт для инициализации всплывающих информационных сообщений {% endcomment %}
+  {# скрипт для инициализации всплывающих информационных сообщений #}
   <script>
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -138,7 +106,7 @@
     })
   </script>
 
-  {% comment %} скрипт для галереи top_gallery {% endcomment %}
+  {# скрипт для галереи top_gallery #}
   <script>
     "use strict";
     $(document).ready(function() {
