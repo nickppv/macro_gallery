@@ -178,3 +178,8 @@ text-shadow:
   -1px -1px 0 #46d4e7;
   mix-blend-mode: difference;
 } */
+
+.tag-search-input {
+  background-color: #242424;
+  color: white;
+}
