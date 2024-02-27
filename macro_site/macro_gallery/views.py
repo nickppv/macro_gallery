@@ -1,5 +1,6 @@
 from random import sample
 from PIL import Image
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.contrib.postgres.search import SearchVector
@@ -19,8 +20,10 @@ def choose_picture_for_slider(i) -> list:
 
 
 def index(request, tag_slug=None):
+    title = 'Главная страница'
+    all_photo = Photo.objects.all().order_by('?')
 
-    all_photo = Photo.objects.all()
+
 
     # выбираем элемент из queryset, проверяем его размер и добавляем в список
     # выбираем в слайдер пять случайных записей из списка
@@ -35,14 +38,19 @@ def index(request, tag_slug=None):
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         all_photo = all_photo.filter(tags__in=[tag])
-    # случайная выборка изображений для слайдера
-    results = all_photo.order_by('?')
+        title = f'Результаты поиска по тегу: {tag}'
+    results = all_photo
+
+    paginator = Paginator(all_photo, 10)  # сколько изображений будет на странице
+    page_number = request.GET.get('page')  # в переменную page_number передаем полученный номер страницы
+    results = paginator.get_page(page_number)  # получаем все картинки для соответствующей страницы
 
     return render(request,
                   'macro_gallery/index.html',
-                  {'title': 'Главная страница',
+                  {'title': title,
                    'results': results,
-                   'slider_photo_list': slider_photo_list, })
+                   'slider_photo_list': slider_photo_list,
+                   })
 
 
 def search(request):
@@ -65,6 +73,10 @@ def search(request):
                 search=SearchVector('title', 'description', 'tags__name'),
                 ).filter(search=query).values('id').distinct()
             results = Photo.objects.filter(id__in=results).order_by('?')
+
+    paginator = Paginator(results, 10)
+    page_number = request.GET.get('page')
+    results = paginator.get_page(page_number)
 
     return render(request,
                   'macro_gallery/index.html',
