@@ -32,6 +32,7 @@
 </head>
 
 <body>
+
   {# слайдер  с рандомными фотографиями #}
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
@@ -95,6 +96,12 @@
           </div>
         </div>
       {% endfor %}
+    </div>
+  </div>
+
+  <div class="container overflow-hidden my-1">
+    <div class="row main-gallery col-6 mx-auto">
+      {% include 'macro_gallery/includes/paginator.html' %}
     </div>
   </div>
 
