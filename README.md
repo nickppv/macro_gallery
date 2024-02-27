@@ -1,2 +1,2 @@
 # macro_gallery
-Website with various macro photographs.
+Website with various macro pictures.
