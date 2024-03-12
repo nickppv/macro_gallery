@@ -181,11 +181,27 @@ text-shadow:
 
 .tag-search-input {
   background-color: #242424;
-  color: white;
+  color: silver;
+}
+
+.tag-search-input::placeholder {
+  color: silver;
+}
+
+.tag-search-input:focus {
+  background-color: rgb(26, 43, 43);
+  color: silver;
+  box-shadow: none;
+}
+
+.tag-search-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px rgb(26, 43, 43) inset;
+  box-shadow: 0 0 0 30px rgb(26, 43, 43) inset;
+  color: silver;
 }
 
 .pagination .page-item a {
-  background-color: DarkSlateGrey;
+  background-color: silver;
   border: 1px solid black;
   color: silver;
 }
