@@ -183,3 +183,15 @@ text-shadow:
   background-color: #242424;
   color: white;
 }
+
+.pagination .page-item a {
+  background-color: DarkSlateGrey;
+  border: 1px solid black;
+  color: silver;
+}
+
+.pagination .active .page-link {
+  background-color: rgb(26, 43, 43);
+  border: 1px solid black;
+  color: silver;
+}
