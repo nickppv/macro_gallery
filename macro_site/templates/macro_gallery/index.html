@@ -33,17 +33,17 @@
 
 <body>
 
-  {# слайдер  с рандомными фотографиями #}
+  {# слайдер с рандомными фотографиями #}
   <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade carousel-general" data-bs-ride="carousel">
     <div class="carousel-inner carousel-second-div">
         {% for i in slider_photo_list %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">  {# проверка: если элемент первый - делаем его активным (active). без этого слайдер не работает #}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="2000">  {# проверка: если элемент первый - делаем его активным (active). без этого слайдер не работает #}
           <img src="{{i.photo.url}}" class="d-block h-100 carus-img" alt="{{i.photo.description}}">
         </div>
         {% endfor %}
     </div>
     <div class="brand-name">
-        <h1 title="Чмок!" style="pointer-events: none">I-MACRO</h1>
+        <h1 title="Чмок!" style="pointer-events: ">I-MACRO</h1>
     </div>
   </div>
 
@@ -80,8 +80,8 @@
                 <h4 class="card-title d-inline">{{ photo.title }}</h4>
               </div>
               {% if photo.information %}
-                <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="{{ photo.information}}">
-                  <button class="btn btn-sm btn-black info-button" type="button">?</button>
+                <span tabindex="0" data-bs-toggle="popover" class="popover_information" data-bs-trigger="hover focus" data-bs-content="{{ photo.information}}">
+                  <sup>info</sup>
                 </span>
               {% endif %}
             </div>
@@ -99,6 +99,7 @@
     </div>
   </div>
 
+  {# пагинатор #}
   <div class="container overflow-hidden my-1">
     <div class="row main-gallery col-6 mx-auto">
       {% include 'macro_gallery/includes/paginator.html' %}
