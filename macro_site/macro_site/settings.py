@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'macro_gallery.apps.MacroGalleryConfig',
     'sass_processor',
-    'el_pagination',  # ленивая загрузка изображений
     'taggit',  # для тегирования фотографий
     'sorl.thumbnail',  # для создания миниатюр изображений
 ]
