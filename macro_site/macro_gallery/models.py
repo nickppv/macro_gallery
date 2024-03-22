@@ -10,7 +10,6 @@ class Photo(models.Model):
     information = models.TextField(blank=True, verbose_name="Интересная информация")
     created_at = models.DateTimeField(blank=True, null=True, verbose_name="Дата создания")
     published_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата публикации")
-    # photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
     photo = ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Изображение")
     tags = TaggableManager()
 
