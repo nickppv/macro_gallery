@@ -5,7 +5,7 @@
 
 .carousel-second-div {
   height: 40vh;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .carousel-item img {
@@ -25,7 +25,7 @@ H1 {
   font-family: 'Comfortaa', sans-serif;
   /* font-family: 'Roboto Flex', sans-serif; */
   font-weight: 700;
-  font-size: 120px;
+  font-size: 80px;
   color: rgb(8, 8, 8);
   text-shadow:
   0px 0px 10px #aaaaaa,
@@ -180,7 +180,7 @@ text-shadow:
 } */
 
 .tag-search-input {
-  background-color: #242424;
+  background-color: #303030;
   color: silver;
 }
 
@@ -189,19 +189,41 @@ text-shadow:
 }
 
 .tag-search-input:focus {
-  background-color: rgb(26, 43, 43);
+  background-color: #303030;
   color: silver;
   box-shadow: none;
 }
 
 .tag-search-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px rgb(26, 43, 43) inset;
-  box-shadow: 0 0 0 30px rgb(26, 43, 43) inset;
+  -webkit-box-shadow: 0 0 0 30px #303030 inset;
+  box-shadow: 0 0 0 30px #303030 inset;
   color: silver;
 }
 
+.card-tag {
+  cursor: default;
+}
+
+.popover_information {
+  color: greenyellow;
+}
+
+.popover_information:hover {
+  cursor: help;
+  text-shadow: 0px 0px 2px greenyellow;
+}
+
+.popover {
+  color: greenyellow;
+  background-color: DarkSlateGray;
+}
+
+.popover-body {
+  color: silver !important;
+}
+
 .pagination .page-item a {
-  background-color: silver;
+  background-color: DarkSlateGray;
   border: 1px solid black;
   color: silver;
 }
