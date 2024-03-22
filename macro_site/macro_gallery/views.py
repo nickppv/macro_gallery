@@ -21,14 +21,13 @@ def choose_picture_for_slider(i) -> list:
 
 def index(request, tag_slug=None):
     title = 'Главная страница'
-    all_photo = Photo.objects.all().order_by('?')
-
-
+    all_photo = Photo.objects.all()
 
     # выбираем элемент из queryset, проверяем его размер и добавляем в список
     # выбираем в слайдер пять случайных записей из списка
     slider_photo_list = []
-    for i in all_photo:
+    slider_random_choice = all_photo.order_by('?')
+    for i in slider_random_choice:
         if choose_picture_for_slider(i):
             slider_photo_list.append(i)
     slider_photo_list = sample(slider_photo_list, 5)
@@ -72,16 +71,18 @@ def search(request):
             results = Photo.objects.annotate(
                 search=SearchVector('title', 'description', 'tags__name'),
                 ).filter(search=query).values('id').distinct()
-            results = Photo.objects.filter(id__in=results).order_by('?')
+            results = Photo.objects.filter(id__in=results)
 
-    paginator = Paginator(results, 10)
-    page_number = request.GET.get('page')
-    results = paginator.get_page(page_number)
+            paginator = Paginator(results, 5)
+            page_number = request.GET.get('page')
+            results = paginator.get_page(page_number)
 
-    return render(request,
-                  'macro_gallery/index.html',
-                  {'title': f'Поиск по: {query}',
-                   'form': form,
-                   'query': query,
-                   'results': results,
-                   'slider_photo_list': slider_photo_list, })
+    return render(
+        request,
+        'macro_gallery/index.html',
+        {'title': f'Поиск по тегу: {query}' if query else 'Ничего не найдено',
+         'form': form,
+         'query': query,
+         'results': results,
+         'slider_photo_list': slider_photo_list, }
+        )
