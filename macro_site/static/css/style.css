@@ -1,75 +1,74 @@
 .carousel-general {
+  width: 100%;
   box-shadow: 0px 2px 2px black;
   /* border-bottom: 2px solid black; */
 }
 
 .carousel-second-div {
-  height: 40vh;
+  aspect-ratio: 16 / 4;
   opacity: 0.8;
 }
 
-.carousel-item img {
-  transform: translateY(-300px); /* сместил изображение вверх по вертикали*/
-  /* width: 100%; */
+.carus-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: translateY(-200px); /* сместил изображение вверх по вертикали*/
 }
 
 .brand-name {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 /* четвертый набор - переход с черного на прозрачное с хроматизмом*/
-H1 {
-  font-family: 'Comfortaa', sans-serif;
+.title_href {
+  font-family: "Vollkorn SC", serif;
+  font-weight: 600;
+  font-style: normal;
+  /* font-family: 'Georgia'; */
   /* font-family: 'Roboto Flex', sans-serif; */
-  font-weight: 700;
-  font-size: 80px;
+  /* font-weight: 700; */
+  letter-spacing: 15px;
+  font-size: 5vw;
+  color: rgb(8, 8, 8);
+  transition: 0.3s;
+  text-shadow:
+  0px 0px 10px rgb(131, 131, 131),
+  1px 1px 0 #000000,
+  1px -1px 0 #000000,
+  -1px 1px 0 #000000,
+  -1px -1px 0 #000000;
+  position: absolute;
+  top: 10vi;
+  text-decoration: none;
+  opacity: 0.8;
+  mix-blend-mode: difference;
+}
+
+.title_href:hover {
   color: rgb(8, 8, 8);
   text-shadow:
-  0px 0px 10px #aaaaaa,
-  1px 1px 0 #aaaaaa,
-  1px -1px 0 #aaaaaa,
-  -1px 1px 0 #aaaaaa,
-  -1px -1px 0 #aaaaaa;
-  transition: all 0.3s;
+  0px 0px 10px rgb(255, 255, 255),
+  1px 1px 0 #000000,
+  1px -1px 0 #000000,
+  -1px 1px 0 #000000,
+  -1px -1px 0 #000000;
+  transition: 0.3s;
   position: absolute;
-  transform: translateY(-200px);
-  /* top: 150px; */
-  /* text-align: center; */
-  mix-blend-mode: multiply;
+  mix-blend-mode: difference;
 }
 
 body {
   background-color: #242424;
-  /* font-family: Georgia; */
+  /* font-family: 'Verdana', sans-serif; */
+  /* font-family: 'Georgia'; */
 }
 
 .carus-img {
   object-fit: cover;
   width: 100%;
 }
-
-.info-button {
-  color: #6d6d6d;
-}
-
-/* .top_gallery {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -4px;
-} */
-
-
-
-/* .gallery {
-  position: relative;
-  justify-content: center;
-  align-items: center;
-} */
 
 .logo_gallery {
   display: flex;
@@ -93,92 +92,6 @@ body {
   z-index: 10;
 }
 
-/*первый набор - переход с черного размытия на прозрачное со светлым размытием*/
-/* H1 {
-    font-size: 120px;
-    color: rgb(8, 8, 8);
-    text-shadow:
-    0px 0px 10px #aaaaaa,
-    1px 1px 0 #aaaaaa,
-    1px -1px 0 #aaaaaa,
-    -1px 1px 0 #aaaaaa,
-    -1px -1px 0 #aaaaaa;
-    transition: all 0.3s;
-    position: absolute;
-    top: 150px;
-    text-align: center;
-    mix-blend-mode: multiply;
-  }
-
-H1:hover {
-  font-size: 120px;
-  text-shadow:
-    2px 2px 5px rgb(187, 187, 187),
-    1px 1px 0 rgb(0, 0, 0),
-    1px -1px 0 rgb(0, 0, 0),
-    -1px 1px 0 rgb(255, 255, 255),
-    -1px -1px 0 rgb(255, 255, 255);
-    mix-blend-mode:difference;
-} */
-
-
-  /*второй набор - аберрации и белое свечение*/
-  /* H1 {
-  font-size: 80px;
-  color: rgb(8, 8, 8);
-  text-shadow:
-    0px 0px 1px rgb(0, 0, 0),
-    1px 1px 0 rgb(20, 141, 50),
-    1px -1px 0 rgb(0, 0, 0),
-    -1px 1px 0 rgb(0, 0, 0),
-    -1px -1px 0 rgb(136, 85, 132);
-  transition: all 0.3s;
-  position: absolute;
-  top: 150px;
-  text-align: center;
-  padding: 50px;
-  border-radius: 10px;
-  mix-blend-mode: screen;
-}
-
-H1:hover {
-  font-size: 75px;
-  text-shadow:
-  0px 0px 10px #aaaaaa,
-  1px 1px 0 #aaaaaa,
-  1px -1px 0 #aaaaaa,
-  -1px 1px 0 #aaaaaa,
-  -1px -1px 0 #aaaaaa;
-  } */
-
-/* третий набор - просто черное свечение, как будто размытый текст, без перехода */
-/* H1 {
-  font-size: 120px;
-  color: rgb(8, 8, 8);
-  text-shadow:
-  0px 0px 10px #aaaaaa,
-  1px 1px 0 #aaaaaa,
-  1px -1px 0 #aaaaaa,
-  -1px 1px 0 #aaaaaa,
-  -1px -1px 0 #aaaaaa;
-  transition: all 0.3s;
-  position: absolute;
-  top: 150px;
-  text-align: center;
-  mix-blend-mode: multiply;
-} */
-
-/* H1:hover {
-font-size: 120px;
-text-shadow:
-  0px 0px 0px rgb(187, 187, 187),
-  2px 2px 0 #ec4545,
-  1px -1px 0 #ec4545,
-  -2px 2px 0 #46d4e7,
-  -1px -1px 0 #46d4e7;
-  mix-blend-mode: difference;
-} */
-
 .tag-search-input {
   background-color: #303030;
   color: silver;
@@ -200,27 +113,9 @@ text-shadow:
   color: silver;
 }
 
-.card-tag {
-  cursor: default;
-}
 
-.popover_information {
-  color: greenyellow;
-}
 
-.popover_information:hover {
-  cursor: help;
-  text-shadow: 0px 0px 2px greenyellow;
-}
 
-.popover {
-  color: greenyellow;
-  background-color: DarkSlateGray;
-}
-
-.popover-body {
-  color: silver !important;
-}
 
 .pagination .page-item a {
   background-color: DarkSlateGray;
